@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>Registration</h1>
+<form method="post" action="{% url 'save_student' %}">
+    {% csrf_token %}
+    <input type="text" placeholder="Name" name="stud_name"><br><br>
+
+    <input type="text" placeholder="Place" name="stud_place"><br><br>
+    <input type="text" placeholder="Course" name="stud_course"><br><br>
+   <button type="submit">Register</button>
+
+
+
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Classlist</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'save_classlist' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                        <label for="exampleInputName1">ClassListName</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="ClassListName" name="class">
+                      </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputName2">Date</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Date" name="date">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="desc" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputName2">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Price" name="price">
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                        <label for="exampleInputDate">Upload Class Image</label>
+                        <input type="file" class="form-control" id="exampleInputDate" placeholder="Class Image" name="image">
+                      </div>
+
+
+
+
+                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}',' ','warning');
+            </script>
+
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}',' ','error');
+            </script>
+
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}',' ','info');
+            </script>
+
+        {% else %}
+            <script>
+            swal('{{i}}',' ','success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

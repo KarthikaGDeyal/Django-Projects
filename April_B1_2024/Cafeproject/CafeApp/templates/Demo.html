@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Categories</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'save_demo' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Category Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Category Name" name="cat_name">
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputAge1">Age</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputAge1" placeholder="Age" name="stud_age" >-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputEmail3">Email address</label>-->
+<!--                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="stud_email">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputMobile4">Mobile</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputMobile4" placeholder="Mobile" name="stud_mobile">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectCourse">Course</label>-->
+<!--                        <select class="form-control" id="exampleSelectCourse" name="stud_course" >-->
+<!--                          <option>Course</option>-->
+<!--                          <option>Python</option>-->
+<!--                          <option>Testing</option>-->
+<!--                          <option>Asp.Net</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label>File upload</label>-->
+<!--                        <input type="file" name="img[]" class="file-upload-default">-->
+<!--                        <div class="input-group col-xs-12">-->
+<!--                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                          <span class="input-group-append">-->
+<!--                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                          </span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputCity1">City</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                      </div>-->
+<!--                      <div class="form-group row">-->
+<!--                            <label class="col-sm-3 col-form-label">Gender</label>-->
+<!--                            <div class="col-sm-4">-->
+<!--                              <div class="form-check">-->
+<!--                                <label class="form-check-label" for="genderRadios1">-->
+<!--                                  <input type="radio" class="form-check-input" name="stud_gender" id="genderRadios1" value="Male" checked=""> Male <i class="input-helper"></i></label>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-5">-->
+<!--                              <div class="form-check">-->
+<!--                                <label class="form-check-label" for="genderRadios2">-->
+<!--                                  <input type="radio" class="form-check-input"  id="genderRadios2" value="Female"> Female <i class="input-helper"></i></label>-->
+<!--                              </div>-->
+<!--                            </div>-->
+
+<!--                          </div>-->
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="cat_des" rows="4"></textarea>
+                      </div>
+                         <div class="form-group">
+                        <label for="exampleInputDate">Upload Category Image</label>
+                        <input type="file" class="form-control" id="exampleInputDate" placeholder="Category Image" name="image">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}',' ','warning');
+            </script>
+
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}',' ','error');
+            </script>
+
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}',' ','info');
+            </script>
+
+        {% else %}
+            <script>
+            swal('{{i}}',' ','success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

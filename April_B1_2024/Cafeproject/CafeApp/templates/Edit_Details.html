@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Your Details Here</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'update_details' cat_id=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Category Name</label>
+                        <input type="text"  value={{data.CategoryName}} class="form-control" id="exampleInputName1" placeholder="CategoryName" name="cat_name">
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputAge1">Age</label>-->
+<!--                        <input type="text" value="{{data.Age}}" class="form-control" id="exampleInputAge1" placeholder="Age" name="stud_age" >-->
+<!--                   <div class="form-group">-->
+<!--                      <label for="exampleInputEmail">Place</label>-->
+<!--                    <input type="text" value="{{data.Place}}" class="form-control" id="exampleInputEmail" placeholder="Place" name="place_name">-->
+<!--                    </div>-->
+
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputMobile4">Mobile</label>-->
+<!--                        <input type="text" value="{{data.Mobile}}" class="form-control" id="exampleInputMobile4" placeholder="Mobile" name="mobile_no">-->
+<!--                      </div>-->
+
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectSalary">Salary</label>-->
+<!--                        <select class="form-control" value="{{data.Salary}}" id="exampleSelectSalary" name="emp_salary" >-->
+<!--                          <option>Salary</option>-->
+<!--                          <option>50000</option>-->
+<!--                          <option>25000</option>-->
+<!--                          <option>35000</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+
+<!--                       <div class="form-group">-->
+<!--                        <label for="exampleInputImage">City</label>-->
+<!--                        <input type="text"  value="{{data.City}}" class="form-control" id="exampleInputImage" placeholder="Location" name="emp_place">-->
+<!--                      </div>-->
+
+
+
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectCourse">Salary</label>-->
+<!--                        <select class="form-control" id="exampleSelectCourse" name="emp_salary" >-->
+<!--                          <option>{{data.Salary}}</option>-->
+<!--                          <option>50000</option>-->
+<!--                          <option>25000</option>-->
+<!--                          <option>35000</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+
+<!--                      <div class="form-group row">-->
+<!--                            <label class="col-sm-3 col-form-label">Gender</label>-->
+<!--                            <div class="col-sm-4">-->
+<!--                              <div class="form-check">-->
+<!--                                <label class="form-check-label" for="genderRadios1">-->
+<!--                                  <input type="radio" class="form-check-input" name="stud_gender" id="genderRadios1" value="Male" checked=""> Male <i class="input-helper"></i></label>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-5">-->
+<!--                              <div class="form-check">-->
+<!--                                <label class="form-check-label" for="genderRadios2">-->
+<!--                                  <input type="radio" class="form-check-input"  id="genderRadios2" value="Female"> Female <i class="input-helper"></i></label>-->
+<!--                              </div>-->
+<!--                            </div>-->
+
+<!--                          </div>-->
+                     <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="cat_des" rows="4">{{data.Description}}</textarea>
+
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputFile">Category Image</label>
+                            <img src="{{data.CategoryImage.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile" placeholder="Category Image" name="image">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

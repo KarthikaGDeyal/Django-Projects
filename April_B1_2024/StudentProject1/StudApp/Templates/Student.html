@@ -1,0 +1,35 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>Student Registration</h1>
+<form method="post" action = "{% url 'save_student' %}">
+    {% csrf_token %}
+    <input type="text" placeholder="Name" name="stud_name"><br><br>
+    <input type="text" placeholder="Place" name="stud_place"><br><br>
+    <input type="text" placeholder="Course" name="stud_course"><br><br>
+    <input type="text" placeholder="Company" name="stud_company"><br><br>
+    <input type="text" placeholder="Salary" name="stud_salary"><br><br>
+    <input type="text" placeholder="Mobile" name="stud_mobile"><br><br>
+    <input type="text" placeholder="Email" name="stud_email"><br><br>
+    <textarea name="Address" placeholder="Address"></textarea><br><br>
+    <select name="Designation" >Select Designation>
+         <option value= "Select Your Designation">Select Designation</option>
+        <option value= "HR">HR</option>
+            <option value="Developer">Developer</option>
+            <option value="Software Tester">Software Tester</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Manager">Manager</option>
+        </select><br><br>
+    <input type="radio" name="Gender" value="Male">Male
+    <input type="radio" name="Gender" value="Female">Female
+    <input type="radio" name="Gender" value="Others">Others<br><br>
+    <button type="submit">Register</button>
+</form>
+</div>
+</body>
+</html>

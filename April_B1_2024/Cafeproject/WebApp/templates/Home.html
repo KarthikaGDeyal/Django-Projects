@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cake Template">
+    <meta name="keywords" content="Cake, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cake | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+       <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<style>
+    .category-img {
+    max-width: 150px; /* Set the maximum width to control the size */
+    width: 100%; /* Make sure the image scales */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image inside the column */
+}
+
+@media (min-width: 768px) {
+    /* For larger screens, you can adjust the image size */
+    .category-img {
+        max-width: 200px; /* Adjust width to medium-big for larger screens */
+    }
+}
+
+.product__item__pic {
+    text-align: center; /* Center the image and its container */
+    padding: 10px;
+}
+
+  /* Remove the bullet points from the list */
+.header__top__left__links ul {
+    list-style-type: none;
+}
+
+/* Styling the user link text */
+.header__top__left__links .user-link {
+    color: black;              /* Set text color to black */
+    text-decoration: none;      /* Remove underline from the link */
+    font-weight: 500;           /* Optional: Slightly bolder text */
+}
+
+/* Ensure it stays visible on hover */
+.header__top__left__links .user-link:hover {
+    color: #333;                /* Change color slightly on hover (optional) */
+    text-decoration: underline; /* Optional: Underline on hover */
+}
+
+
+</style>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+     <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+<!--                <a href="#" class="search-switch"><img src="/static/img/icon/search.png" alt=""></a>-->
+                <a href="{% url 'wishlist' %}"><img src="/static/img/icon/heart.png" alt=""></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="{% url 'cart_page' %}"><img src="/static/img/icon/cart.png" alt=""> <span>0</span></a>
+<!--                <div class="cart__price">Cart: <span>$0.00</span></div>-->
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="{% url 'all_products' %}"><img src="/static/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__option">
+            <ul>
+                <li>USD <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>EUR</li>
+                        <li>USD</li>
+                    </ul>
+                </li>
+                <li>ENG <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>Spanish</li>
+                        <li>ENG</li>
+                    </ul>
+                </li>
+                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+
+                                    {% if request.session.Username %}
+                                <li><a href="{% url 'User_logout' %}">Welcome {{request.session.Username}} / Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'loginpage' %}">Sign in</a></li>
+                                        {% endif %}
+                                </ul>
+                            </div>
+
+
+                            <div class="header__logo">
+                                <a href="{% url 'all_products' %}"><img src="/static/img/logo.png" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+<!--                                    <a href="#" class="search-switch"><img src="/static/img/icon/search.png" alt=""></a>-->
+                                    <a href="{% url 'wishlist' %}"><img src="/static/img/icon/heart.png" alt=""></a>
+                                </div>
+                                <div class="header__top__right__cart">
+                                    <a href="{% url 'cart_page' %}"><img src="/static/img/icon/cart.png" alt=""> <span>0</span></a>
+<!--                                    <div class="cart__price">Cart: <span>$0.00</span></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="/homepage/">Home</a></li>
+                            <li><a href="/aboutpage/">About</a></li>
+                            <li><a href="/all_products/">Shop</a></li>
+                            <li><a href="#">Categories</a>
+                                <ul class="dropdown">
+
+                                    <li><a href="/products/Cookies/">Cookies</a></li>
+
+                                    <li><a href="/products/Cheesecakes/">Cheesecakes</a></li>
+
+                                    <li><a href="/products/Brownies/">Brownies</a></li>
+
+                                    <li><a href="/products/Cupcakes/">Cupcakes</a></li>
+
+                                    <li><a href="/products/Muffins/">Muffins</a></li>
+
+                                    <li><a href="/products/Donuts/">Donuts</a></li>
+
+                                    <li><a href="/products/Cinnamon%20Rolls/">Cinnamon Rolls</a></li>
+
+                                    <li><a href="/products/Cakes/">Cakes</a></li>
+
+                                    <li><a href="/products/Pastries/">Pastries</a></li>
+
+                                    <li><a href="/products/Breads/">Breads</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">More</a>
+                                <ul class="dropdown">
+                                    <li><a href="/testimonials/">Testimonials</a></li>
+                                    <li><a href="/cart_page/">Shopping Cart</a></li>
+                                    <li><a href="/checkout_page/">Check Out</a></li>
+                                    <li><a href="/wishlist/">Wishlist</a></li>
+                                    <li><a href="/class_list_view/">Class</a></li>
+
+                                </ul>
+                            </li>
+<!--                            <li><a href="{% url 'chatpage' %}">Chat</a></li>-->
+
+                            <li><a href="/Contactpage/">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Begin -->
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+         {% for category, image in hero_images.items %}
+            <div class="hero__item set-bg" data-setbg="{% static 'img/hero/hero-1.jpg' %}">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <!-- Display the category name dynamically -->
+                                <h2>Making your life sweeter one bite at a time!</h2>
+
+                                <a href="{% url 'filtered_products' cat_name=category.CategoryName %}" class="primary-btn">Our {{ category.CategoryName }}</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+    <!-- Hero Section End -->
+
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                {% for abouts in about %}
+                <div class="col-lg-6 col-md-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <span>About Cake shop</span>
+                            <h2>Cakes and bakes from the house of Queens!</h2>
+                        </div>
+<!--                        <p>{{abouts.Description}}</p><br><br>-->
+                        <p>{{abouts.Description1}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="about__bar">
+                        <div class="about__bar__item">
+                            <p>Cake design</p>
+                            <div id="bar1" class="barfiller">
+                                <div class="tipWrap"><span class="tip"></span></div>
+                                <span class="fill" data-percentage="95"></span>
+                            </div>
+                        </div>
+                        <div class="about__bar__item">
+                            <p>Cake Class</p>
+                            <div id="bar2" class="barfiller">
+                                <div class="tipWrap"><span class="tip"></span></div>
+                                <span class="fill" data-percentage="80"></span>
+                            </div>
+                        </div>
+                        <div class="about__bar__item">
+                            <p>Cake Recipes</p>
+                            <div id="bar3" class="barfiller">
+                                <div class="tipWrap"><span class="tip"></span></div>
+                                <span class="fill" data-percentage="90"></span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Categories Section Begin -->
+  <div class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <!-- Category Item: Cookies -->
+                <a href="{% url 'filtered_products' cat_name='Cookies' %}">  <!-- Anchor tag for redirection to Cookies page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-030-cupcake-2"></span>
+                            <h5>Cookies</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Cheesecakes -->
+                <a href="{% url 'filtered_products' cat_name='Cheesecakes' %}"> <!-- Redirect to Cheesecakes page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-034-chocolate-roll"></span>
+                            <h5>Cheesecakes</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Brownies -->
+                <a href="{% url 'filtered_products' cat_name='Brownies' %}">  <!-- Redirect to Brownies page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-005-pancake"></span>
+                            <h5>Brownies</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Muffins -->
+                <a href="{% url 'filtered_products' cat_name='Muffins' %}">  <!-- Redirect to Muffins page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-030-cupcake-2"></span>
+                            <h5>Muffins</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Donuts -->
+                <a href="{% url 'filtered_products' cat_name='Donuts' %}">  <!-- Redirect to Donuts page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>Donuts</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Cinnamon Rolls -->
+                <a href="{% url 'filtered_products' cat_name='Cinnamon Rolls' %}">  <!-- Redirect to Cinnamon Rolls page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>Cinnamon Rolls</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Cakes -->
+                 <a href="{% url 'filtered_products' cat_name='Cakes' %}"> <!-- Redirect to Cakes page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-029-cupcake-3"></span>
+                            <h5>Cakes</h5>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category Item: Pastries -->
+                <a href="{% url 'filtered_products' cat_name='Pastries' %}"> <!-- Redirect to Pastries page -->
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-034-chocolate-roll"></span>
+                            <h5>Pastries</h5>
+                        </div>
+                    </div>
+                </a>
+
+
+                <!-- Category Item: Breads -->
+                <a href="{% url 'filtered_products' cat_name='Breads' %}">
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-005-pancake"></span>
+                            <h5>Breads</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Categories Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                {% for product in cheesecakes %}
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+
+            {% for product in brownies %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% for product in cinnamonrolls %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+
+            {% for product in donuts %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                           <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+                 {% for product in cakes %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Daisplay the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+                 {% for product in pastries %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+             {% for product in cupcakes %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                           <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+           {% for product in cookies %}
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{ product.ProductImage.url }}">
+                        <div class="product__label">
+                            <!-- Display the category name (Cheesecake) -->
+                            <span>{{ product.CategoryName }}</span>
+                        </div>
+                    </div>
+                    <div class="product__item__text">
+                        <!-- Display the product name -->
+                        <h6><a href="{% url 'single_product'  pro_id=product.id%}">{{ product.ProductName }}</a></h6>
+                        <!-- Display the product price -->
+                        <div class="product__item__price">₹{{ product.Price }}</div>
+                        <div class="cart_add">
+                            <a href="{% url 'single_product' pro_id=product.id %}">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+
+        </div>
+
+        </div>
+</section>
+
+
+    <!-- Product Section End -->
+
+    <!-- Class Section Begin -->
+    <section class="class spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="class__form">
+                        <div class="section-title">
+                            <span>Class cakes</span>
+                            <h2>Made from your <br />own hands</h2>
+                        </div>
+                        <div class="contact__form">
+                        <form class="forms-sample" method="post" action= "{% url 'save_class' %}">
+                            {% csrf_token %}
+                        <form action="#">
+                            <input type="text" placeholder="Name" name="name" >
+                            <input type="text" placeholder="Phone" name="phone">
+                            <select name="studclass">
+                                <option value="">Studying Class</option>
+                                <option value="online">Online Advanced Baking Course Class</option>
+                                <option value="online">Online Teen Baking Course Class</option>
+                                <option value="online">Online The Ultimate Baking Course Class</option>
+                                <option value="online">Online Kids Baking Course Class</option>
+                                <option value="offline">Offline Advanced Baking Course Class</option>
+                                <option value="offline">Offline Teen Baking Course Class</option>
+                                <option value="offline">Offline The Ultimate Baking Course Class</option>
+                                <option value="offline">Offline Kids Baking Course Class</option>
+                            </select>
+                            <input type="text" placeholder="Type your requirements" name="req">
+                            <button type="submit" class="site-btn">registration</button>
+                        </form>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="class__video set-bg" data-setbg="{% static 'img/class-video.jpg' %}">
+                <a href="https://www.youtube.com/watch?v=1q3lIaxaqmg"
+                class="play-btn video-popup"><i class="fa fa-play"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- Class Section End -->
+
+    <!-- Team Section Begin -->
+    <section class="team spad">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="section-title">
+                    <span>Our team</span>
+                    <h2>Sweet Baker</h2>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5">
+                <div class="team__btn">
+                    <a href="{% url 'Teampage' %}" class="primary-btn">Join Us</a>
+                </div>
+            </div>
+        </div>
+        <!-- Dynamic Team Members Section -->
+        <div class="row">
+            <!-- Loop through the team members from the database -->
+            {% for member in team %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item set-bg" data-setbg="{{ member.ProfileImage.url }}">
+                        <div class="team__item__text">
+                            <!-- Display Name, Position, and Email -->
+                            <h6>{{ member.Name }}</h6>
+                            <span>{{ member.Position }}</span>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <!-- Team Section End -->
+
+    <!-- Testimonial Section Begin -->
+   <section class="testimonial spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <span>Testimonial</span>
+                    <h2>What Our Clients Say</h2>
+                </div>
+            </div>
+        </div>
+
+
+<div class="row">
+     <div class="testimonial__slider owl-carousel">
+    {% for testimonial in testimonials %}
+        <div class="col-lg-6">
+            <div class="testimonial__item">
+                <div class="testimonial__author">
+                    <div class="testimonial__author__pic">
+                        <img src="{{ testimonial.ProfileImage.url }}" alt="{{ testimonial.Name }}">
+                    </div>
+                    <div class="testimonial__author__text">
+                        <h5>{{ testimonial.Name }}</h5>
+                        <span>{{ testimonial.Place }}</span>
+                    </div>
+                </div>
+                <div class="rating">
+                    {% for i in rating_range %}
+                        {% if i <= testimonial.Rating %}
+                            <span class="icon_star"></span>
+                        {% elif i == testimonial.Rating|floatformat:1 %}
+                            <span class="icon_star-half_alt"></span>
+                        {% else %}
+                            <span class="icon_star_empty"></span>  {# Optional empty star #}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p>{{ testimonial.Review }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+  </div>
+    </div>
+</section>
+
+
+    <!-- Testimonial Section End -->
+
+    <!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 p-0">
+                <div class="instagram__text">
+                    <div class="section-title">
+                        <span>Follow us on Instagram</span>
+                        <h2>Sweet moments are saved as memories.</h2>
+                    </div>
+                    <!-- Wrap @sweetcake in an anchor tag to make it clickable -->
+                    <h5>
+                        <i class="fa fa-instagram"></i>
+                        <a href="https://www.instagram.com/sallysbakeblog/?hl=en" target="_blank" style="color: inherit; text-decoration: none;">
+                            @sweetcake
+                        </a>
+
+                    </h5>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="{% static 'img/instagram/instagram-1.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic middle__pic">
+                            <img src="{% static 'img/instagram/instagram-2.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="{% static 'img/instagram/instagram-3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="{% static 'img/instagram/instagram-4.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic middle__pic">
+                            <img src="{% static 'img/instagram/instagram-5.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="{% static 'img/instagram/instagram-3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <!-- Instagram Section End -->
+
+    <!-- Map Begin -->
+    <div class="map">
+        <div class="container">
+            <div class="row">
+                {% for contact in contacts %}
+                <div class="col-lg-4 col-md-7">
+                    <div class="map__inner">
+                        <h6>{{ contact.Place }}</h6>
+                        <ul>
+                            <li>{{ contact.Address }}</li>
+                            <li>{{ contact.Email }}</li>
+                            <li>{{ contact.Phone }}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="map__iframe">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.4783510266357!2d76.57334987456017!3d9.379344383407512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0807842e6dad23%3A0xb1857944a361937f!2sThe%20Belgian%20Waffle%20Co!5e0!3m2!1sen!2sin!4v1727958248485!5m2!1sen!2sin" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+    <!-- Map End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="{% static 'img/footer-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                 {% for footer in footers %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>WORKING HOURS</h6>
+                        <ul>
+                            <li>{{footer.Description1}}</li>
+                            <li>{{footer.Description2}}</li>
+                            <li>{{footer.Description3}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="{% url 'all_products' %}"><img src="{% static 'img/footer-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>{{footer.Description4}}</p>
+                        <div class="footer__social">
+                            <a href="https://www.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://x.com/i/flow/login"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/accounts/login/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@PreppyKitchen"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__newslatter">
+                        <h6>Subscribe</h6>
+                        <p>{{footer.Description5}}</p>
+                        <p>{{footer.Email}}</p>
+
+<!--                            <button type="submit"><i class="fa fa-send-o"></i></button>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+<!--                    <div class="col-lg-7">-->
+<!--                        <p class="copyright__text text-white">&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>-->
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!--                      </p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-5">-->
+<!--                    <div class="copyright__widget">-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">Privacy Policy</a></li>-->
+<!--                            <li><a href="#">Terms & Conditions</a></li>-->
+<!--                            <li><a href="#">Site Map</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+                {% endfor %}
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<!--<div class="search-model">-->
+<!--    <div class="h-100 d-flex align-items-center justify-content-center">-->
+<!--        <div class="search-close-switch">+</div>-->
+<!--        <form class="search-model-form">-->
+<!--            <input type="text" id="search-input" placeholder="Search here.....">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&#45;&#45; Search End &ndash;&gt;-->
+
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}',' ','warning');
+            </script>
+
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}',' ','error');
+            </script>
+
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}',' ','info');
+            </script>
+
+        {% else %}
+            <script>
+            swal('{{i}}',' ','success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script> window.chtlConfig = { chatbotId: "9864962269" } </script>
+<script async data-id="9864962269" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+</body>
+
+</html>

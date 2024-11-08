@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Details</title>
+</head>
+<body>
+<h1>Team Details</h1>
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+<!--                    <h4 class="card-title">Hoverable Table</h4>-->
+<!--                    <p class="card-description"> Add class <code>.table-hover</code>-->
+<!--                    </p>-->
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                              <th>ProfileImage</th>
+                            <th>Name</th>
+                              <th>Gender</th>
+                              <th>Email</th>
+                              <th>Mobile</th>
+                            <th>Position</th>
+                              <th>Resume</th>
+
+
+
+                               <th>Options</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                           {% for d in data %}
+                          <tr>
+                                <td>
+                                  <img src="{{d.ProfileImage.url}}" width="100px" height="100px">
+                              </td>
+                              <td>{{d.Name}}</td>
+                              <td>{{d.Gender}}</td>
+                              <td>{{d.Email}}</td>
+                              <td>{{d.Mobile}}</td>
+                              <td>{{d.Position}}</td>
+                               <td>
+                                  <img src="{{d.Resume.pdf}}" width="100px" height="100px">
+                              </td>
+                              <td>
+                                  <a href="{% url 'delete_team' team_id=d.id  %}">
+                                     <button class="btn btn-outline-primary">Delete</button>
+                                  </a>
+                              </td>
+
+
+
+
+
+                         </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

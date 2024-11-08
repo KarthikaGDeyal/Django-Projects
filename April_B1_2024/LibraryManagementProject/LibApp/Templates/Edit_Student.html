@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Your Details Here</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'update_student' stud_id=data.id %}">
+                        {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text"  value={{data.Name}} class="form-control" id="exampleInputName1" placeholder="Name" name="stud_name">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputAge1">Age</label>
+                        <input type="text" value="{{data.Age}}" class="form-control" id="exampleInputAge1" placeholder="Age" name="stud_age" >
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Email address</label>
+                        <input type="email"  value="{{data.Email}}" class="form-control" id="exampleInputEmail3" placeholder="Email" name="stud_email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputMobile4">Mobile</label>
+                        <input type="text" value="{{data.Mobile}}" class="form-control" id="exampleInputMobile4" placeholder="Mobile" name="stud_mobile">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectCourse">Course</label>
+                        <select class="form-control" id="exampleSelectCourse" name="stud_course" >
+                          <option>{{data.Course}}</option>
+                          <option>Python</option>
+                          <option>Testing</option>
+                          <option>Asp.Net</option>
+                        </select>
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label>File upload</label>-->
+<!--                        <input type="file" name="img[]" class="file-upload-default">-->
+<!--                        <div class="input-group col-xs-12">-->
+<!--                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                          <span class="input-group-append">-->
+<!--                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                          </span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputCity1">City</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                      </div>-->
+                      <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <label class="form-check-label" for="genderRadios1">
+                                  <input type="radio" class="form-check-input" name="stud_gender" id="genderRadios1" value="Male" checked=""> Male <i class="input-helper"></i></label>
+                              </div>
+                            </div>
+                            <div class="col-sm-5">
+                              <div class="form-check">
+                                <label class="form-check-label" for="genderRadios2">
+                                  <input type="radio" class="form-check-input"  id="genderRadios2" value="Female"> Female <i class="input-helper"></i></label>
+                              </div>
+                            </div>
+
+                          </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Address</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="stud_address" rows="4">{{data.Address}}</textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

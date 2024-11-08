@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cake Template">
+    <meta name="keywords" content="Cake, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cake | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+<!--                <a href="#" class="search-switch"><img src="% static 'img/icon/search.png' %}" alt=""></a>-->
+                <a href="{% url 'wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="{% url 'cart_page' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+<!--                <div class="cart__price">Cart: <span>$0.00</span></div>-->
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="{% url 'all_products' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__option">
+            <ul>
+                <li>USD <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>EUR</li>
+                        <li>USD</li>
+                    </ul>
+                </li>
+                <li>ENG <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>Spanish</li>
+                        <li>ENG</li>
+                    </ul>
+                </li>
+                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+     <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+
+                                    {% if request.session.Username %}
+                                <li><a href="{% url 'User_logout' %}">Welcome {{request.session.Username}} / Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'loginpage' %}">Sign in</a></li>
+                                        {% endif %}
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="{% url 'all_products' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+<!--                                    <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>-->
+                                    <a href="{% url 'wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+                                </div>
+                                <div class="header__top__right__cart">
+                                    <a href="{% url 'cart_page' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+<!--                                    <div class="cart__price">Cart: <span>$0.00</span></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li><a href="{% url 'aboutpage' %}">About</a></li>
+                            <li><a href="{% url 'all_products' %}">Shop</a></li>
+                            <li><a href="#">Categories</a>
+                                <ul class="dropdown">
+                                    {% for i in cat %}
+                                    <li><a href="{% url 'filtered_products' cat_name=i.CategoryName %}">{{i.CategoryName}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="#">More</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                                    <li><a href="{% url 'cart_page' %}">Shopping Cart</a></li>
+                                    <li><a href="{% url 'checkout_page' %}">Check Out</a></li>
+                                    <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                                    <li><a href="{% url 'class_list_view' %}">Class</a></li>
+
+                                </ul>
+                            </li>
+<!--                            <li><a href="./blog.html">Chat</a></li>-->
+
+                            <li><a href="{% url 'Contactpage' %}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__text">
+                        <h2>Shopping cart</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__links">
+                        <a href="{% url 'homepage' %}">Home</a>
+                        <span>Shopping cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for d in data %}
+                            <tr>
+                                <td>{{d.Product_name}}</td>
+                                <td>{{d.Quantity}}</td>
+                                <td>₹ {{d.Price}}</td>
+                                <td>₹ {{d.Total_price}}</td>
+                                <td class="cart__close">
+                                    <a href="{% url 'delete_cart' data_id=d.id %}"><i class="fa fa-close"></i></a>
+                                </td>
+                            </tr>
+                               {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn">
+                                <a href="{% url 'all_products' %}">Continue Shopping</a>
+                            </div>
+                        </div>
+<!--                        <div class="col-lg-6 col-md-6 col-sm-6">-->
+<!--                            <div class="continue__btn update__btn">-->
+<!--                                <a href="{% url 'cart_page' %}"><i class="fa fa-spinner"></i> Update cart</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                     <div class="cart__discount">
+        <h6>Discount codes</h6>
+        <form id="discount-form" method="POST"  action="{% url 'apply_discount' %}">
+            {% csrf_token %}
+            <input type="text" name="coupon_code" id="coupon-code" placeholder="Enter discount code" required>
+            <button type="submit">Apply</button>
+
+
+            <!-- Discount Codes Dropdown -->
+            <div id="discount-dropdown" style="margin-top: 10px;">
+                <select id="discount-select" style="padding: 5px;">
+                    <option value="">Select a Discount Code</option>
+                    <option value="DISCOUNT10">DISCOUNT10 - 10% Off On Orders above ₹500</option>
+                    <option value="SAVE20">SAVE20 - 20% Off On Orders above ₹700</option>
+<!--                    <option value="SAVE40 AND FREESHIP">SAVE40 AND FREESHIP - 40% Off And Free Shipping On Orders above ₹1000</option>-->
+                </select>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Shopping Cart Totals Section -->
+    <div class="cart__total">
+        <h6>Cart total</h6>
+        <ul>
+            <li>Subtotal <span>₹ <span id="sub-total">{{ sub_total }}</span></span></li>
+            <li>Shipping Charge <span>₹ <span id="shipping-charge">{{ shipping }}</span></span></li>
+            {% if discount_amount > 0 %}
+            <li>Discount <span>₹ <span id="discount-amount">{{discount_amount }}</span></span></li>
+            {% endif %}
+            <li>Total <span>₹ <span id="total-amount">{{total}}</span></span></li>
+        </ul>
+        <a href="{% url 'checkout_page' %}" class="primary-btn">Proceed to checkout</a>
+    </div>
+</div>
+
+<!-- JavaScript to Handle Discount Code Selection and Application -->
+<script>
+    // Discount codes and their respective discount values and conditions
+    const DISCOUNTS = {
+        'DISCOUNT10': { 'discount': 0.10, 'min_total': 500, 'description': '10% off on orders above ₹500' },
+        'SAVE20': { 'discount': 0.20, 'min_total': 700, 'description': '20% off on orders above ₹700' }
+
+
+    };
+
+    // Elements
+    const discountSelect = document.getElementById('discount-select');
+    const couponCodeInput = document.getElementById('coupon-code');
+    const applyButton = document.getElementById('apply-button');
+    const subTotalElement = document.getElementById('sub-total');
+    const shippingChargeElement = document.getElementById('shipping-charge');
+    const discountAmountElement = document.getElementById('discount-amount');
+    const totalAmountElement = document.getElementById('total-amount');
+
+    // Event Listener for Discount Dropdown Change
+    discountSelect.addEventListener('change', function () {
+        const selectedCode = discountSelect.value;
+        couponCodeInput.value = selectedCode;  // Set the input field to selected code
+    });
+
+    // Event Listener for Apply Button Click
+    applyButton.addEventListener('click', function () {
+        const selectedCode = couponCodeInput.value;
+
+        // Validate if the discount code exists
+        if (DISCOUNTS[selectedCode]) {
+            const discountDetails = DISCOUNTS[selectedCode];
+            const subTotal = parseFloat(subTotalElement.textContent);
+            const shippingCharge = parseFloat(shippingChargeElement.textContent);
+            let discountValue = 0;
+            let totalAmount = subTotal + shippingCharge;
+
+            // Check if the subtotal meets the discount criteria
+            if (subTotal >= discountDetails['min_total']) {
+                // Apply percentage discount if not free shipping
+                if (selectedCode !== 'FREESHIP') {
+                    discountValue = subTotal * discountDetails['discount'];
+                } else {
+                    discountValue = 0;  // No monetary discount for free shipping
+                }
+
+                // Calculate the new total amount
+                totalAmount -= discountValue;
+
+                // If free shipping, set shipping to zero
+                if (selectedCode === 'FREESHIP') {
+                    totalAmount -= shippingCharge;  // Remove current shipping charge
+                    shippingChargeElement.textContent = '0';  // Set shipping to zero
+                }
+
+                // Update the UI with the new values
+                discountAmountElement.textContent = discountValue.toFixed(2);
+                totalAmountElement.textContent = totalAmount.toFixed(2);
+
+                alert(`Discount applied! Your new total is ₹${totalAmount.toFixed(2)}`);
+            } else {
+                alert(`This discount code requires a minimum order total of ₹${discountDetails['min_total']}`);
+            }
+        } else {
+            alert("Invalid discount code. Please select a valid code from the dropdown.");
+        }
+    });
+</script>
+
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+ <footer class="footer set-bg" data-setbg="{% static 'img/footer-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                 {% for footer in footers %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>WORKING HOURS</h6>
+                        <ul>
+                            <li>{{footer.Description1}}</li>
+                            <li>{{footer.Description2}}</li>
+                            <li>{{footer.Description3}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="{% url 'all_products' %}"><img src="{% static 'img/footer-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>{{footer.Description4}}</p>
+                        <div class="footer__social">
+                            <a href="https://www.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://x.com/i/flow/login"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/accounts/login/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@PreppyKitchen"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__newslatter">
+                        <h6>Subscribe</h6>
+                        <p>{{footer.Description5}}</p>
+                        <p>{{footer.Email}}</p>
+
+<!--                            <button type="submit"><i class="fa fa-send-o"></i></button>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+<!--                    <div class="col-lg-7">-->
+<!--                        <p class="copyright__text text-white">&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>-->
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!--                      </p>-->
+<!--                  </div>-->
+<!--                  <div class="col-lg-5">-->
+<!--                    <div class="copyright__widget">-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">Privacy Policy</a></li>-->
+<!--                            <li><a href="#">Terms & Conditions</a></li>-->
+<!--                            <li><a href="#">Site Map</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+                {% endfor %}
+        </div>
+    </div>
+</footer>
+
+
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+    // Get references to elements
+    const applyButton = document.getElementById('apply-button');
+    const discountDropdown = document.getElementById('discount-dropdown');
+    const discountSelect = document.getElementById('discount-select');
+    const couponInput = document.getElementById('coupon-input');
+
+    // Show dropdown when "Apply" button is clicked
+    applyButton.addEventListener('click', function () {
+        discountDropdown.style.display = 'block';
+    });
+
+    // Fill input box with selected discount code
+    discountSelect.addEventListener('change', function () {
+        const selectedCode = discountSelect.value;
+        couponInput.value = selectedCode;  // Set input value to selected code
+
+        // Hide the dropdown after selecting a code
+        discountDropdown.style.display = 'none';
+    });
+
+    // Optional: Handle form submission with discount code (AJAX or form submission)
+    document.getElementById('discount-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent default form submission
+
+        const discountCode = couponInput.value;
+
+        // Here, you can send the discount code to the backend or update the total price
+        alert('Applied discount code: ' + discountCode);
+
+        // Implement AJAX or form submission logic to apply the discount here
+    });
+</script>
+ {% if messages %}
+    <div>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}',' ','warning');
+            </script>
+
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}',' ','error');
+            </script>
+
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}',' ','info');
+            </script>
+
+        {% else %}
+            <script>
+            swal('{{i}}',' ','success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script> window.chtlConfig = { chatbotId: "9864962269" } </script>
+<script async data-id="9864962269" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+</body>
+</html>

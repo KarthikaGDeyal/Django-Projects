@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Product</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'save_product' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                        <label for="exampleSelectCourse">Category Name</label>
+                        <select class="form-control" id="exampleSelectCourse" name="cat_name" >
+                            {% for d in demo %}
+                          <option>{{d.CategoryName}}</option>
+                            {% endfor %}
+
+
+                        </select>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" name="pro_name">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="pro_des" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Price" name="price">
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                        <label for="exampleInputDate">Upload Product Image</label>
+                        <input type="file" class="form-control" id="exampleInputDate" placeholder="Product Image" name="image">
+                      </div>
+
+                         <div class="form-group">
+                        <label for="exampleInputDate">Upload Product Image1</label>
+                        <input type="file" class="form-control" id="exampleInputDate1" placeholder="Product Image1" name="image1">
+                      </div>
+
+                         <div class="form-group">
+                        <label for="exampleInputDate">Upload Product Image2</label>
+                        <input type="file" class="form-control" id="exampleInputDate2" placeholder="Product Image2" name="image2">
+                      </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputDate">Upload Product Image3</label>
+                        <input type="file" class="form-control" id="exampleInputDate3" placeholder="Product Image3" name="image3">
+                      </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputDate">Upload Product Image4</label>
+                        <input type="file" class="form-control" id="exampleInputDate4" placeholder="Product Image4" name="image4">
+                      </div>
+
+
+
+                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}',' ','warning');
+            </script>
+
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}',' ','error');
+            </script>
+
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}',' ','info');
+            </script>
+
+        {% else %}
+            <script>
+            swal('{{i}}',' ','success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

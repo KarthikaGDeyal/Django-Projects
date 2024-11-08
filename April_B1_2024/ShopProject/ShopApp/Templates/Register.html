@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'Shop.html' %}
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Hello</h1>-->
+<div class="card">
+                  <div class="card-body">
+<!--                    <h4 class="card-title">Basic form elements</h4>-->
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample" method="post" action ="{% url 'registration_data' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       <div class="form-group">
+                        <label for="exampleInputBookName1">Shop Name</label>
+                        <input type="text" class="form-control" id="exampleInputBookName1" placeholder="Shop Name" name="shop_name">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputAuthorName1">Place Name</label>
+                        <input type="text" class="form-control" id="exampleInputAuthorName1" placeholder="Place Name" name="place_name" >
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPrice3">Mobile</label>
+                        <input type="text" class="form-control" id="exampleInputPrice3" placeholder="Mobile Number" name="mobile_no">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputPrice3">Owner Name</label>
+                        <input type="text" class="form-control" id="exampleInputPrice4" placeholder="Owner Name" name="owner_name">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleSelectCourse">Shop Type</label>
+                        <select class="form-control" id="exampleSelectCourse" name="shop_type" >
+                          <option>Shop Type</option>
+                          <option>Textile</option>
+                          <option>Stationary</option>
+                          <option>Medical</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputDate">Profile Image</label>
+
+                        <input type="file" class="form-control" id="exampleInputDate" placeholder="Profile Image" name="image">
+                      </div>
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

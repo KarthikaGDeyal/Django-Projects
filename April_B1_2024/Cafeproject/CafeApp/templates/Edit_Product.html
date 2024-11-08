@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content%}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>Student Page</h1>-->
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Your Details Here</h4>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample"  method="post" action ="{% url 'update_product' pro_id=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="exampleSelectCategory">Category Name</label>
+                        <select class="form-control" id="exampleSelectCategory" name="cat_name">
+                                <option>abc</option>
+                          {% for d in cat %}
+                          <option>{{d.CategoryName}}</option>
+                          {% endfor %}
+                      </select>
+                      </div>
+
+                     <div class="form-group">
+                        <label for="exampleInputName3">Product Name</label>
+                        <input type="text"  value={{data.ProductName}} class="form-control" id="exampleInputName3" placeholder="ProductName" name="pro_name">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="pro_des" rows="4">{{data.Description}}</textarea>
+
+                      <div class="form-group">
+                        <label for="exampleInputName2">Price</label>
+                        <input type="text"  value={{data.Price}} class="form-control" id="exampleInputName2" placeholder="Price" name="price">
+                      </div>
+
+
+
+                      <div class="form-group">
+                        <label for="exampleInputFile1">Upload Product Image</label>
+                            <img src="{{data.ProductImage.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile1" placeholder="Product Image" name="image">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputFile1">Upload Product Image1</label>
+                            <img src="{{data.ProductImage1.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile2" placeholder="Product Image1" name="image1">
+                      </div>
+
+                       <div class="form-group">
+                        <label for="exampleInputFile1">Upload Product Image2</label>
+                            <img src="{{data.ProductImage2.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile3" placeholder="Product Image2" name="image2">
+                      </div>
+
+                          <div class="form-group">
+                        <label for="exampleInputFile1">Upload Product Image3</label>
+                            <img src="{{data.ProductImage3.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile4" placeholder="Product Image3" name="image3">
+                      </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputFile1">Upload Product Image4</label>
+                            <img src="{{data.ProductImage4.url}}" width="100px" height="100px">
+                        <input type="file" class="form-control" id="exampleInputFile5" placeholder="Product Image4" name="image4">
+                      </div>
+
+
+
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}
